@@ -125,7 +125,7 @@ def run(args):
 
     figure = make_speedup_chart(
         target_df,
-        args.speedup_path,
+        args.output,
         args.cpu,
         args.width,
         args.height,
@@ -138,7 +138,7 @@ def run(args):
     if args.show:
         common.show_chart(
             figure,
-            args.speedup_path,
+            args.output,
         )
 
 

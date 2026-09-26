@@ -76,7 +76,7 @@ def extend_argparser(argparser=None):
 def run(args):
     figure = make_complexity_chart(
         common.parse_complexity_many_files([Path(p) for p in args.json]),
-        args.complexity_path,
+        args.output,
         args.cpu,
         args.width,
         args.height,
@@ -88,7 +88,7 @@ def run(args):
     if args.show:
         common.show_chart(
             figure,
-            args.complexity_path,
+            args.output,
         )
 
 
