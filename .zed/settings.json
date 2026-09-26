@@ -1,20 +1,15 @@
 {
   "languages": {
     "Python": {
-      "language_servers": ["ruff"],
-      "code_actions_on_format": {
-        "source.organizeImports.ruff": true,
-      },
+      "language_servers": ["basedpyright", "ruff"],
+      "format_on_save": "on",
     },
   },
   "lsp": {
-    "ruff": {
-      "initialization_options": {
-        "settings": {
-          "configurationPreference": "filesystemFirst",
-          "lint": {
-            "select": ["E", "W", "F", "I", "UP", "B", "SIM"],
-          },
+    "basedpyright": {
+      "settings": {
+        "basedpyright": {
+          "typeCheckingMode": "off",
         },
       },
     },
