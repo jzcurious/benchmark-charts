@@ -1,1 +1,9 @@
-assets/     export-ignore
+# Git
+.gitignore      export-ignore
+.gitattributes  export-ignore
+
+# Assets
+assets/         export-ignore
+
+# Tools
+.zed            export-ignore
