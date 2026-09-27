@@ -27,3 +27,8 @@ def main(argv) -> None:
             return speedup.run(args)
         case "complexity":
             return complexity.run(args)
+
+
+def entrypoint() -> None:
+    import sys
+    raise SystemExit(main(sys.argv[1:]))
