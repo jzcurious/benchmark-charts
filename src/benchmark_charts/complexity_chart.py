@@ -1,20 +1,18 @@
-from pathlib import Path
-
 import plotly.graph_objects as go
 
 import benchmark_charts.common as common
 
-PATH_TO_COMPLEXITY_CHART = f"complexity_chart_{common.timestamp()}.html"
+PATH_TO_COMPLEXITY_CHART = "complexity.html"
 
 
 def make_complexity_chart(
     complexity: dict,
-    path=PATH_TO_COMPLEXITY_CHART,
     cpu_time=False,
-    width=1000,
-    height=600,
     xaxis_log=True,
     yaxis_log=True,
+    height=600,
+    width=1000,
+    fullscreen=False,
     dark=False,
 ) -> go.Figure:
     fig = go.Figure()
@@ -47,13 +45,10 @@ def make_complexity_chart(
         ),
         hovermode="x unified",
         template="plotly_dark" if dark else "plotly_white",
-        width=width,
-        height=height,
-        autosize=False,
+        width=None if fullscreen else width,
+        height=None if fullscreen else height,
+        autosize=fullscreen,
     )
-
-    fig.write_html(path)
-    print(f"The chart file has been saved to {path}.")
 
     return fig
 
@@ -67,29 +62,36 @@ def extend_argparser(argparser=None):
         "--output",
         type=str,
         default=str(PATH_TO_COMPLEXITY_CHART),
-        help="Output path for the complexity chart file",
+        help="Output path for the generated chart. "
+        "If the path ends with '/', it is treated as a directory and "
+        "the filename will be generated automatically. "
+        "Otherwise, it is treated as a file path. "
+        "The .html extension will be added if not specified. "
+        f"Default: {PATH_TO_COMPLEXITY_CHART}",
     )
 
     return argparser
 
 
 def run(args):
+    input_paths = common.resolve_input_paths(*args.input)
+    output_path = common.resolve_output_path(args.output, "complexity")
+
     figure = make_complexity_chart(
-        common.parse_complexity_many_files([Path(p) for p in args.json]),
-        args.output,
-        args.cpu,
-        args.width,
-        args.height,
-        args.xlog,
-        args.ylog,
-        args.dark,
+        complexity=common.parse_complexity_many_files(input_paths, args.filter),
+        cpu_time=args.cpu,
+        width=args.width,
+        height=args.height,
+        fullscreen=args.fullscreen,
+        xaxis_log=args.xlog,
+        yaxis_log=args.ylog,
+        dark=args.dark,
     )
 
+    common.export_chart_to_html(figure, output_path)
+
     if args.show:
-        common.show_chart(
-            figure,
-            args.output,
-        )
+        common.show_chart(figure, output_path)
 
 
 def main(argv):
