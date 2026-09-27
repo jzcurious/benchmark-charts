@@ -12,6 +12,31 @@ A command-line tool for visualizing [Google Benchmark](https://github.com/google
 
 ## Installation
 
+### From source (recommended for now)
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/benchmark-charts.git
+cd benchmark-charts
+```
+
+With [uv](https://github.com/astral-sh/uv):
+```bash
+uv sync
+uv run python -m benchmark_charts --help
+```
+
+Or with pip:
+```bash
+pip install -e .
+benchmark-charts --help
+```
+
+### PyPI *(coming soon)*
+
+> Not yet available. Will be published to PyPI in a future release.
+
 ```bash
 pip install benchmark-charts
 ```
