@@ -1,6 +1,11 @@
-from .cli import main
+from .cli import main as cli_main
 
-if __name__ == "__main__":
+
+def main():
     import sys
 
-    raise SystemExit(main(sys.argv[1:]))
+    raise SystemExit(cli_main(sys.argv[1:]))
+
+
+if __name__ == "__main__":
+    main()
