@@ -17,7 +17,7 @@ A command-line tool for visualizing [Google Benchmark](https://github.com/google
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/your-username/benchmark-charts.git
+git clone https://github.com/jzcurious/benchmark-charts.git
 cd benchmark-charts
 ```
 
@@ -125,6 +125,24 @@ benchmark-charts speedup -i results/ -r BM_StdSort -t BM_MySort -o charts/
 Plot speedup with a baseline and open in the browser:
 ```bash
 benchmark-charts speedup -i results/ -r BM_StdSort -t BM_MySort --baseline --show
+```
+
+---
+
+## Usage in Google Colab / IPython
+
+Install the package:
+
+```python
+!git clone https://github.com/jzcurious/benchmark-charts.git
+!pip install -e benchmark-charts/
+```
+
+Then run any chart command — the result will be rendered inline automatically:
+
+```python
+%run -m benchmark_charts complexity -i results/ --dark --xlog --ylog
+%run -m benchmark_charts speedup -i results/ -r BM_StdSort -t BM_MySort --baseline
 ```
 
 ## Preview
