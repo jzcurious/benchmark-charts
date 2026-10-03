@@ -137,8 +137,6 @@ Then run any chart command — the result will be rendered inline automatically:
 %run -m benchmark_charts speedup -i results/ -r BM_StdSort -t BM_MySort --baseline
 ```
 
-> **Note:** Avoid `--show` in Colab — it has no effect since there is no local browser.
-
 ## Preview
 
 ### Complexity Chart
