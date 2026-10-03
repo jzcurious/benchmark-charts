@@ -14,23 +14,16 @@ A command-line tool for visualizing [Google Benchmark](https://github.com/google
 
 ### From source (recommended for now)
 
-Clone the repository and install dependencies:
-
+With pip:
 ```bash
-git clone https://github.com/jzcurious/benchmark-charts.git
-cd benchmark-charts
-```
-
-With [uv](https://github.com/astral-sh/uv):
-```bash
-uv sync
-uv run python -m benchmark_charts --help
-```
-
-Or with pip:
-```bash
-pip install -e .
+pip install https://github.com/jzcurious/benchmark-charts/archive/refs/tags/v1.0.0.tar.gz
 benchmark-charts --help
+```
+
+Or with [uv](https://github.com/astral-sh/uv):
+```bash
+uv add https://github.com/jzcurious/benchmark-charts/archive/refs/tags/v1.0.0.tar.gz
+uv run benchmark-charts --help
 ```
 
 ### PyPI *(coming soon)*
@@ -134,8 +127,7 @@ benchmark-charts speedup -i results/ -r BM_StdSort -t BM_MySort --baseline --sho
 Install the package:
 
 ```python
-!git clone https://github.com/jzcurious/benchmark-charts.git
-!pip install -e benchmark-charts/
+!pip install https://github.com/jzcurious/benchmark-charts/archive/refs/tags/v1.0.0.tar.gz
 ```
 
 Then run any chart command — the result will be rendered inline automatically:
@@ -144,6 +136,8 @@ Then run any chart command — the result will be rendered inline automatically:
 %run -m benchmark_charts complexity -i results/ --dark --xlog --ylog
 %run -m benchmark_charts speedup -i results/ -r BM_StdSort -t BM_MySort --baseline
 ```
+
+> **Note:** Avoid `--show` in Colab — it has no effect since there is no local browser.
 
 ## Preview
 
