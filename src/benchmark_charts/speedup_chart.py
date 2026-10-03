@@ -147,11 +147,9 @@ def run(args):
         common.show_chart(figure, output_path)
 
 
-def main(argv):
-    run(extend_argparser().parse_args(argv))
+def main():
+    run(extend_argparser().parse_args())
 
 
 if __name__ == "__main__":
-    import sys
-
-    main(sys.argv[1:])
+    common.cli_run(main)

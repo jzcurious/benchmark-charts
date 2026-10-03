@@ -5,7 +5,7 @@ import benchmark_charts.complexity_chart as complexity
 import benchmark_charts.speedup_chart as speedup
 
 
-def main(argv) -> None:
+def main() -> None:
     argparser = argparse.ArgumentParser(prog="benchmark-charts")
     subparsers = argparser.add_subparsers(dest="chart", required=True, metavar="CHART")
 
@@ -20,10 +20,18 @@ def main(argv) -> None:
     complexity.extend_argparser(complexity_argparser)
     speedup.extend_argparser(speedup_argparser)
 
-    args = argparser.parse_args(argv)
+    args = argparser.parse_args()
 
     match args.chart:
         case "speedup":
             return speedup.run(args)
         case "complexity":
             return complexity.run(args)
+
+
+def run():
+    common.cli_run(main)
+
+
+if __name__ == "__main__":
+    run()

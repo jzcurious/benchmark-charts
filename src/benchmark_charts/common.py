@@ -214,3 +214,7 @@ def build_default_argparser(add_help=True):
     )
 
     return argparser
+
+
+def cli_run(entrypoint: callable):
+    raise SystemExit(entrypoint())

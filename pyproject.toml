@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-benchmark-charts = "benchmark_charts.__main__:main"
+benchmark-charts = "benchmark_charts.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.17,<0.13.0"]
